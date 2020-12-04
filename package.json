@@ -1,0 +1,24 @@
+{
+  "name": "tunasync",
+  "version": "1.0.0",
+  "description": "Async library for node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scopics/tunasync.git"
+  },
+  "keywords": [
+    "async",
+    "nodejs",
+    "asynclib"
+  ],
+  "author": "Uryn Dmytro, Govoruha Maxim, Trembach Anastasia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Scopics/tunasync/issues"
+  },
+  "homepage": "https://github.com/Scopics/tunasync#readme"
+}
