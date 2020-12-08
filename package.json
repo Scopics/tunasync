@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Scopics/tunasync/issues"
   },
-  "homepage": "https://github.com/Scopics/tunasync#readme"
+  "homepage": "https://github.com/Scopics/tunasync#readme",
+  "dependencies": {
+    "eslint": "^7.15.0"
+  }
 }
