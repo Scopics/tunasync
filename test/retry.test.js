@@ -13,7 +13,7 @@ async function openDelay(filename, msec) {
   return fsPromises.open(filename, 'w');
 }
 
-openDelay('test.txt', 3000)
+openDelay('test.txt', 4000)
   .then(() => console.log('File created'))
   .catch(err => console.log(err.message));
 
