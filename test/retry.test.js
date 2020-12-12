@@ -23,5 +23,5 @@ writeDelay('test.txt', 4000)
 
 (async () => {
   const res = await retry(readDelay, ['test.txt', 1000], { retries: 5 });
-  console.log(res);
+  console.log(res + '');
 })();
