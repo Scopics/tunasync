@@ -1,22 +1,27 @@
 'use strict';
 
 const fsPromises = require('fs').promises;
-const { retry, sleep } = require('./../lib/retry');
+const { retry } = require('./../lib/retry');
+
+const sleep = msec => new Promise(resolve => {
+  setTimeout(resolve, msec);
+});
 
 async function readDelay(filename, msec) {
   await sleep(msec);
   return fsPromises.readFile(filename);
 }
 
-async function openDelay(filename, msec) {
+async function writeDelay(filename, msec) {
   await sleep(msec);
-  return fsPromises.open(filename, 'w');
+  return fsPromises.writeFile(filename, 'Java is a crap');
 }
 
-openDelay('test.txt', 4000)
+writeDelay('test.txt', 4000)
   .then(() => console.log('File created'))
   .catch(err => console.log(err.message));
 
 (async () => {
-  await retry(5, readDelay, 'test.txt', 1000);
+  const res = await retry(readDelay, ['test.txt', 1000], { retries: 5 });
+  console.log(res);
 })();
