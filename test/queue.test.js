@@ -12,5 +12,6 @@ const q = new queue();
 q.pushTask(createTask, [1]);
 q.pushTask(createTask, [2]);
 q.pushTask(createTask, [6]);
+q.done(result => console.log(result));
 
-q.doTasks().then(result => console.log(result));
+q.doTasks().then(() => console.log('done'));
