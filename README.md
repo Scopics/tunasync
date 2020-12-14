@@ -24,3 +24,22 @@ some((filePath, callback) => {
   .then(res => console.log(res))
   .catch(err => console.log(err.message));
 ```
+
+### reduce(fn, items)
+
+#### Arguments:
+* `fn`:
+    * `acc` - current value of accumulator
+    * `item` - is taken from items
+    * `callback`
+* `startValue` - start value
+* `items` - Array
+
+#### Example
+```javascript
+reduce((acc, item, callback) => {
+  setTimeout(() => callback(null, acc + item), 1000);
+}, 10, [1, 2, 3, 4, 5, 6])
+  .then(res => console.log(res))
+  .catch(err => console.log(err.message));
+```
