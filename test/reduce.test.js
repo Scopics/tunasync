@@ -10,6 +10,6 @@ metatests.test('test reduce', test => {
   }, 10, [1, 2, 3, 4, 5, 6])
     .then(res => test.strictSame(res, expectedResult))
     .catch(err => console.log(err.message));
-  
+
   test.end();
 });
