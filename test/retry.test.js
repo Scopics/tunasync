@@ -1,7 +1,7 @@
 'use strict';
 
 const fsPromises = require('fs').promises;
-const { retry } = require('./../lib/retry');
+const retry = require('./../lib/retry');
 
 const sleep = msec => new Promise(resolve => {
   setTimeout(resolve, msec);
