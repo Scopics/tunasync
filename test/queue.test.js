@@ -1,6 +1,6 @@
 'use strict';
 
-const metatests = require('metatests');''
+const metatests = require('metatests');
 const queue = require('./../lib/queue');
 
 const createTask = value => {
