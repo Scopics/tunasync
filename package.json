@@ -4,7 +4,7 @@
   "description": "Async library for node.js",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "metatests test/"
   },
   "repository": {
     "type": "git",
