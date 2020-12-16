@@ -1,17 +1,32 @@
 'use strict';
 
-const queue = require('../lib/queue');
+const metatests = require('metatests');
+const queue = require('../queue.js');
 
 const createTask = value => {
   if (value === 6) return Promise.reject(new Error('sorry'));
   return new Promise(resolve => setTimeout(() => resolve(value), value));
 };
 
-const q = new queue();
+metatests.test('test queue', test => {
+  const q = new queue();
 
-q.pushTask(createTask, [1]);
-q.pushTask(createTask, [2]);
-q.pushTask(createTask, [6]);
-q.done(result => console.log(result));
+  q.pushTasks(createTask(1));
+  q.pushTasks([createTask(2), createTask(3)]);
 
-q.doTasks().then(() => console.log('done'));
+  const expectedQresult = [1, 2, 3];
+  q.doTasks().then(result => test.strictSame(result, expectedQresult));
+
+  test.end();
+});
+
+metatests.test('test queue with error', test => {
+  const q = new queue();
+
+  q.pushTasks(createTask(1));
+  q.pushTasks([createTask(6), createTask(3)]);
+
+  const expectedQresult = [1, new Error('sorry'), 3];
+  q.doTasks().then(result => test.strictSame(result, expectedQresult));
+  test.end();
+});
