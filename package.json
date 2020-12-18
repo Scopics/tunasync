@@ -4,7 +4,8 @@
   "description": "Async library for node.js",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "metatests test/",
+    "docs": "npx jsdoc2md -f **/*.js > docs.md"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
   "homepage": "https://github.com/Scopics/tunasync#readme",
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^7.15.0"
+    "eslint": "^7.15.0",
+    "jsdoc-to-markdown": "^6.0.1",
+    "metatests": "^0.7.2"
   }
 }
