@@ -9,7 +9,7 @@ const createTask = value => {
 };
 
 metatests.test('test queue', test => {
-  const q = new queue();
+  const q = queue();
 
   q.pushTask(createTask, [1]);
   q.pushTask(createTask, [2]);
@@ -22,7 +22,7 @@ metatests.test('test queue', test => {
 });
 
 metatests.test('test queue with error', test => {
-  const q = new queue();
+  const q = queue();
 
   q.pushTask(createTask, [1]);
   q.pushTask(createTask, [6]);
