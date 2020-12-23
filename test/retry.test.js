@@ -1,22 +1,43 @@
 'use strict';
 
-const fsPromises = require('fs').promises;
-const { retry, sleep } = require('./../lib/retry');
+const metatests = require('metatests');
+const retry = require('./../lib/retry');
+const { sleep } = require('./../lib/utils/promisify');
 
-async function readDelay(filename, msec) {
-  await sleep(msec);
-  return fsPromises.readFile(filename);
-}
+metatests.test('test retry succes', test => {
+  let minSum = 20;
+  const expectedResult = 5;
 
-async function openDelay(filename, msec) {
-  await sleep(msec);
-  return fsPromises.open(filename, 'w');
-}
+  const asyncSum = async (a, b) => {
+    await sleep(100);
+    if (a + b < minSum) {
+      minSum -= a + b;
+      throw new Error('Sorry');
+    }
+    return a + b;
+  };
 
-openDelay('test.txt', 4000)
-  .then(() => console.log('File created'))
-  .catch(err => console.log(err.message));
+  retry(asyncSum, [2, 3], { retries: 5, interval: 10 })
+    .then(data => test.strictSame(data, expectedResult));
 
-(async () => {
-  await retry(5, readDelay, 'test.txt', 1000);
-})();
+  test.end();
+});
+
+metatests.test('test retry error', test => {
+  let minSum = 100;
+  const expectedResult = new Error('Sorry');
+
+  const asyncSum = async (a, b) => {
+    await sleep(100);
+    if (a + b < minSum) {
+      minSum -= a + b;
+      throw new Error('Sorry');
+    }
+    return a + b;
+  };
+
+  retry(asyncSum, [2, 3], { retries: 5, interval: 10 })
+    .catch(err => test.strictSame(err, expectedResult));
+
+  test.end();
+});
