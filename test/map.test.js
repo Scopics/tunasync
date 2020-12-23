@@ -12,6 +12,6 @@ const sleep = msec => new Promise(resolve => {
   const res = await map(async item => {
     await sleep(1000);
     return item + 2;
-  }, arr);
+  }, arr, { parallel: true });
   console.log(res);
 })();
