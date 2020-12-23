@@ -9,9 +9,9 @@ const sleep = msec => new Promise(resolve => {
 });
 
 (async () => {
-  const res = await map(arr, async item => {
+  const res = await map(async item => {
     await sleep(1000);
-    return item + 2
-  });
+    return item + 2;
+  }, arr);
   console.log(res);
 })();
