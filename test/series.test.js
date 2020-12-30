@@ -11,8 +11,8 @@ const createFn = value => (err, cb) => {
 };
 
 const createAsyncFn = value => () => {
-  if (value === 6) return Promise.reject((new Error('sorry')));
-  return new Promise(resolve => setTimeout(() => resolve((value)), value));
+  if (value === 6) return Promise.reject(new Error('sorry'));
+  return new Promise(resolve => setTimeout(() => resolve(value), value));
 };
 
 metatests.test('test series', test => {
@@ -25,7 +25,7 @@ metatests.test('test series', test => {
   series(fns, (err, data) => {
     const result = { err, data };
     test.strictSame(result, expectedResult);
-  });
+  }, 1);
 
   test.end();
 });
@@ -40,7 +40,7 @@ metatests.test('test series with error', test => {
   series(fns, (err, data) => {
     const result = { err, data };
     test.strictSame(result, expectedResult);
-  });
+  }, 1);
 
   test.end();
 });
@@ -55,7 +55,7 @@ metatests.test('test series async', test => {
   series(fns, (err, data) => {
     const result = { err, data };
     test.strictSame(result, expectedResult);
-  }, 1);
+  });
 
   test.end();
 });
@@ -70,7 +70,7 @@ metatests.test('test series async with error', test => {
   series(fns, (err, data) => {
     const result = { err, data };
     test.strictSame(result, expectedResult);
-  }, 1);
+  });
 
   test.end();
 });
