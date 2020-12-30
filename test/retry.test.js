@@ -17,8 +17,24 @@ metatests.test('test retry succes', test => {
     return a + b;
   };
 
+  const expectedResultCb = 10;
+  let minSumCb = 20;
+  const sumCb = (a, b, cb) => {
+    if (a + b < minSumCb) {
+      minSumCb -= a + b;
+      cb(new Error('Sorry'));
+    }
+    cb(null, a + b);
+  };
+
   retry(asyncSum, [2, 3], { retries: 5, interval: 10 })
     .then(data => test.strictSame(data, expectedResult));
+
+  retry(
+    sumCb,
+    [2, 3, (err, data) => data * 2],
+    { isCb: true, retries: 5, interval: 10 })
+    .then(data => test.strictSame(data, expectedResultCb));
 
   test.end();
 });
@@ -36,7 +52,22 @@ metatests.test('test retry error', test => {
     return a + b;
   };
 
+  let minSumCb = 100;
+  const sumCb = (a, b, cb) => {
+    if (a + b < minSumCb) {
+      minSumCb -= a + b;
+      cb(new Error('Sorry'));
+    }
+    cb(null, a + b);
+  };
+
   retry(asyncSum, [2, 3], { retries: 5, interval: 10 })
+    .catch(err => test.strictSame(err, expectedResult));
+
+  retry(
+    sumCb,
+    [2, 3, (err, data) => data * 2],
+    { isCb: true, retries: 5, interval: 10 })
     .catch(err => test.strictSame(err, expectedResult));
 
   test.end();
