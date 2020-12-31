@@ -1,22 +1,74 @@
 'use strict';
 
-const fsPromises = require('fs').promises;
-const { retry, sleep } = require('./../lib/retry');
+const metatests = require('metatests');
+const retry = require('./../lib/retry');
+const { sleep } = require('./../lib/utils/promisify');
 
-async function readDelay(filename, msec) {
-  await sleep(msec);
-  return fsPromises.readFile(filename);
-}
+metatests.test('test retry succes', test => {
+  let minSum = 20;
+  const expectedResult = 5;
 
-async function openDelay(filename, msec) {
-  await sleep(msec);
-  return fsPromises.open(filename, 'w');
-}
+  const asyncSum = async (a, b) => {
+    await sleep(100);
+    if (a + b < minSum) {
+      minSum -= a + b;
+      throw new Error('Sorry');
+    }
+    return a + b;
+  };
 
-openDelay('test.txt', 4000)
-  .then(() => console.log('File created'))
-  .catch(err => console.log(err.message));
+  const expectedResultCb = 10;
+  let minSumCb = 20;
+  const sumCb = (a, b, cb) => {
+    if (a + b < minSumCb) {
+      minSumCb -= a + b;
+      cb(new Error('Sorry'));
+    }
+    cb(null, a + b);
+  };
 
-(async () => {
-  await retry(5, readDelay, 'test.txt', 1000);
-})();
+  retry(asyncSum, [2, 3], { retries: 5, interval: 10 })
+    .then(data => test.strictSame(data, expectedResult));
+
+  retry(
+    sumCb,
+    [2, 3, (err, data) => data * 2],
+    { isCb: true, retries: 5, interval: 10 })
+    .then(data => test.strictSame(data, expectedResultCb));
+
+  test.end();
+});
+
+metatests.test('test retry error', test => {
+  let minSum = 100;
+  const expectedResult = new Error('Sorry');
+
+  const asyncSum = async (a, b) => {
+    await sleep(100);
+    if (a + b < minSum) {
+      minSum -= a + b;
+      throw new Error('Sorry');
+    }
+    return a + b;
+  };
+
+  let minSumCb = 100;
+  const sumCb = (a, b, cb) => {
+    if (a + b < minSumCb) {
+      minSumCb -= a + b;
+      cb(new Error('Sorry'));
+    }
+    cb(null, a + b);
+  };
+
+  retry(asyncSum, [2, 3], { retries: 5, interval: 10 })
+    .catch(err => test.strictSame(err, expectedResult));
+
+  retry(
+    sumCb,
+    [2, 3, (err, data) => data * 2],
+    { isCb: true, retries: 5, interval: 10 })
+    .catch(err => test.strictSame(err, expectedResult));
+
+  test.end();
+});
