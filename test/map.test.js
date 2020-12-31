@@ -11,24 +11,17 @@ metatests.test('test async callback function', test => {
     setTimeout(() => {
       cb(null, item + 2);
     }, 10);
-  }, [arr], { isCb: true })
+  }, arr, { isCb: true })
     .then(data => test.strictSame(data, expectedResult));
 
-  const expectedResultCb = [ 4, 5, 6, 8, 5, '1221' ];
-  map((item, cb) => {
-    setTimeout(() => {
-      cb(null, item + 2);
-    }, 10);
-  }, [arr, (err, data) => data + 1], { isCb: true })
-    .then(data => test.strictSame(data, expectedResultCb));
-
+  // Error
   const expectedError = new Error('Sorry');
   map((item, cb) => {
     setTimeout(() => {
       if (item === 2) cb(new Error('Sorry'), null);
       cb(null, item + 2);
     }, 10);
-  }, [arr], { isCb: true })
+  }, arr, { isCb: true })
     .catch(err => test.strictSame(err, expectedError));
 
   test.end();
@@ -39,14 +32,14 @@ metatests.test('test async promise function', test => {
   map(async item => {
     await sleep(10);
     return item + 2;
-  }, [arr])
+  }, arr)
     .then(data => test.strictSame(data, expectedResult));
 
   // Parallel
   map(async item => {
     await sleep(10);
     return item + 2;
-  }, [arr], { parallel: true })
+  }, arr, { parallel: true })
     .then(data => test.strictSame(data, expectedResult));
 
   // Error
@@ -55,7 +48,7 @@ metatests.test('test async promise function', test => {
     await sleep(10);
     if (item === 2) throw new Error('Sorry');
     return item + 2;
-  }, [arr])
+  }, arr)
     .catch(err => test.strictSame(err, expectedError));
 
   // Parallel error
@@ -63,7 +56,7 @@ metatests.test('test async promise function', test => {
     await sleep(10);
     if (item === 2) throw new Error('Sorry');
     return item + 2;
-  }, [arr], { parallel: true })
+  }, arr, { parallel: true })
     .catch(err => test.strictSame(err, expectedError));
 
   test.end();
