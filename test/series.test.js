@@ -25,7 +25,7 @@ metatests.test('test series', test => {
   series(fns, (err, data) => {
     const result = { err, data };
     test.strictSame(result, expectedResult);
-  }, 1);
+  }, { isCb: 1 });
 
   test.end();
 });
@@ -40,7 +40,7 @@ metatests.test('test series with error', test => {
   series(fns, (err, data) => {
     const result = { err, data };
     test.strictSame(result, expectedResult);
-  }, 1);
+  }, { isCb: 1 });
 
   test.end();
 });
