@@ -16,43 +16,19 @@ const createAsyncFn = value => () => {
 };
 
 metatests.test('test series', test => {
-  const fns = [createFn(2000), createFn(60), createFn(500)];
+  const fns1 = [createFn(2000), createFn(60), createFn(500)];
+  const fns2 = [createAsyncFn(2000), createAsyncFn(60), createAsyncFn(500)];
   const expectedResult = {
     err: null,
     data: [2000, 60, 500]
   };
 
-  series(fns, (err, data) => {
+  series(fns1, (err, data) => {
     const result = { err, data };
     test.strictSame(result, expectedResult);
   }, { isCb: 1 });
 
-  test.end();
-});
-
-metatests.test('test series with error', test => {
-  const fns = [createFn(2000), createFn(6), createFn(500)];
-  const expectedResult = {
-    err: new Error('sorry'),
-    data: undefined
-  };
-
-  series(fns, (err, data) => {
-    const result = { err, data };
-    test.strictSame(result, expectedResult);
-  }, { isCb: 1 });
-
-  test.end();
-});
-
-metatests.test('test series async', test => {
-  const fns = [createAsyncFn(2000), createAsyncFn(60), createAsyncFn(500)];
-  const expectedResult = {
-    err: null,
-    data: [2000, 60, 500]
-  };
-
-  series(fns, (err, data) => {
+  series(fns2, (err, data) => {
     const result = { err, data };
     test.strictSame(result, expectedResult);
   });
@@ -60,14 +36,20 @@ metatests.test('test series async', test => {
   test.end();
 });
 
-metatests.test('test series async with error', test => {
-  const fns = [createAsyncFn(2000), createAsyncFn(6), createAsyncFn(500)];
+metatests.test('test series with error', test => {
+  const fns1 = [createFn(2000), createFn(6), createFn(500)];
+  const fns2 = [createAsyncFn(2000), createAsyncFn(6), createAsyncFn(500)];
   const expectedResult = {
     err: new Error('sorry'),
     data: undefined
   };
 
-  series(fns, (err, data) => {
+  series(fns1, (err, data) => {
+    const result = { err, data };
+    test.strictSame(result, expectedResult);
+  }, { isCb: 1 });
+
+  series(fns2, (err, data) => {
     const result = { err, data };
     test.strictSame(result, expectedResult);
   });
