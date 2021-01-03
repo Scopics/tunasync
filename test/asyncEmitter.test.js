@@ -76,3 +76,48 @@ metatests.test('test asyncEmitter onTemporary', test => {
 
   test.end();
 });
+
+metatests.test('test asyncEmitter clear and names', test => {
+  const ee = new AsyncEmitter();
+  const expectedResult1 = ['e1', 'e2'];
+  const expectedResult2 = ['e2'];
+  const expectedResult3 = [];
+
+  ee.on('e1', fn1);
+  ee.on('e2', fn2);
+
+  const result1 = ee.names();
+  test.strictSame(result1, expectedResult1);
+
+  ee.clear('e1');
+  const result2 = ee.names();
+  test.strictSame(result2, expectedResult2);
+
+  ee.clear();
+  const result3 = ee.names();
+  test.strictSame(result3, expectedResult3);
+
+  test.end();
+});
+
+metatests.test('test asyncEmitter listeners and count', test => {
+  const ee = new AsyncEmitter();
+  const expectedResult1 = [fn1, fn2];
+  const expectedResult2 = 1;
+  const expectedResult3 = 2;
+
+  ee.on('e1', fn1);
+  ee.on('e1', fn2);
+  ee.on('e2', fn2);
+
+  const result1 = ee.listeners('e1');
+  test.strictSame(result1, expectedResult1);
+
+  const result2 = ee.count('e2');
+  test.strictSame(result2, expectedResult2);
+
+  const result3 = ee.count();
+  test.strictSame(result3, expectedResult3);
+
+  test.end();
+});
