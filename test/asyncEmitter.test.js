@@ -14,6 +14,27 @@ const fn2 = async data => {
   return 'fn2 ' + data;
 };
 
+metatests.test('test asyncEmitter remove', test => {
+  const ee = new AsyncEmitter();
+  const expectedResult1 = [ 'fn1 called1' ];
+  const expectedResult2 = [ 'fn1 called2', 'fn2 called2' ];
+
+  ee.on('e1', fn1);
+  ee.once('e1', fn2);
+  ee.on('e1', fn1);
+
+  ee.on('e2', fn1);
+  ee.on('e2', fn2);
+
+  ee.emit('e1', 'called1');
+  ee.emit('e1', 'called1')
+    .then(data => test.strictSame(data, expectedResult1));
+
+  ee.emit('e2', 'called2')
+    .then(data => test.strictSame(data, expectedResult2));
+
+  test.end();
+});
 
 metatests.test('test asyncEmitter remove', test => {
   const ee = new AsyncEmitter();
