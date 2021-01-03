@@ -14,7 +14,7 @@ const fn2 = async data => {
   return 'fn2 ' + data;
 };
 
-metatests.test('test asyncEmitter remove', test => {
+metatests.test('test asyncEmitter once', test => {
   const ee = new AsyncEmitter();
   const expectedResult1 = [ 'fn1 called1' ];
   const expectedResult2 = [ 'fn1 called2', 'fn2 called2' ];
