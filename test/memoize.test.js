@@ -15,7 +15,7 @@ const sumCb = (a, b, cb) => {
   }, 100);
 };
 
-metatests.test('test queue with error', test => {
+metatests.test('test memoize async', test => {
   const memoizedSum = memoize(sum);
   const result = [];
   const expectedResult = [4, 6, 4];
