@@ -53,3 +53,23 @@ metatests.test('test callback', test => {
 
   test.end();
 });
+
+metatests.test('test memoize cacheSize', test => {
+  const memoizedSum = memoize(sum, { cacheSize: 2 });
+  const result = [];
+  const expectedResult = [50, 50, 90, 50, 50];
+
+  memoizedSum(30, 20)
+    .then(res => result.push(res))
+    .then(() => memoizedSum(25, 25))
+    .then(res => result.push(res))
+    .then(() => memoizedSum(45, 45))
+    .then(res => result.push(res))
+    .then(() => memoizedSum(30, 20))
+    .then(res => result.push(res))
+    .then(() => memoizedSum(25, 25))
+    .then(res => result.push(res))
+    .then(() => test.strictSame(result, expectedResult));
+
+  test.end();
+});
