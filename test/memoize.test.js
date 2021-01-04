@@ -9,6 +9,12 @@ const sum = async (a, b) => {
   return a + b;
 };
 
+const sumCb = (a, b, cb) => {
+  setTimeout(() => {
+    cb(null, a + b);
+  }, 100);
+};
+
 metatests.test('test queue with error', test => {
   const memoizedSum = memoize(sum);
   const result = [];
@@ -20,6 +26,29 @@ metatests.test('test queue with error', test => {
     .then(res => result.push(res))
     .then(() => memoizedSum(1, 3))
     .then(res => result.push(res))
+    .then(() => test.strictSame(result, expectedResult));
+
+  test.end();
+});
+
+metatests.test('test callback', test => {
+  const memoizedSumCb = memoize(sumCb, { isCb: true });
+  const expectedResult = [9, 10, 7, 9];
+  const result = [];
+
+  memoizedSumCb(4, 5)
+    .then(data => {
+      result.push(data);
+      return memoizedSumCb(4, 6);
+    })
+    .then(data => {
+      result.push(data);
+      return memoizedSumCb(4, 3);
+    })
+    .then(data => {
+      result.push(data);
+      return memoizedSumCb(4, 5);
+    })
     .then(() => test.strictSame(result, expectedResult));
 
   test.end();
