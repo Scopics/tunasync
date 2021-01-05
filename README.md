@@ -406,3 +406,12 @@ some((filePath, callback) => {
 
 Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** shows if function from any arg
 returns true
+
+
+## Contributors
+* [Говоруха Максим](https://github.com/MaksGovor)
+* [Урин Дмитро](https://github.com/tedi4t)
+* [Трембач Анастасія](https://github.com/Anastasia-Tre)
+
+## License
+Tun async is [MIT licensed](https://github.com/Scopics/tunasync/blob/main/LICENSE).
