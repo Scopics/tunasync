@@ -1,7 +1,7 @@
 'use strict';
 
 const metatests = require('metatests');
-const { series } = require('./../lib/series');
+const series = require('./../lib/series');
 
 const createFn = value => (err, cb) => {
   setTimeout(() => {
@@ -26,7 +26,7 @@ metatests.test('test series', test => {
   series(fns1, (err, data) => {
     const result = { err, data };
     test.strictSame(result, expectedResult);
-  }, { isCb: 1 });
+  }, { isCb: true });
 
   series(fns2, (err, data) => {
     const result = { err, data };
@@ -47,7 +47,7 @@ metatests.test('test series with error', test => {
   series(fns1, (err, data) => {
     const result = { err, data };
     test.strictSame(result, expectedResult);
-  }, { isCb: 1 });
+  }, { isCb: true });
 
   series(fns2, (err, data) => {
     const result = { err, data };
