@@ -4,7 +4,7 @@ const metatests = require('metatests');
 const retry = require('./../lib/retry');
 const { sleep } = require('./../lib/utils/promisify');
 
-metatests.test('test retry succes', test => {
+metatests.test('test retry succes', (test) => {
   let minSum = 20;
   const expectedResult = 5;
 
@@ -28,18 +28,18 @@ metatests.test('test retry succes', test => {
   };
 
   retry(asyncSum, [2, 3], { retries: 5, interval: 10 })
-    .then(data => test.strictSame(data, expectedResult));
+    .then((data) => test.strictSame(data, expectedResult));
 
   retry(
     sumCb,
     [2, 3, (err, data) => data * 2],
     { isCb: true, retries: 5, interval: 10 })
-    .then(data => test.strictSame(data, expectedResultCb));
+    .then((data) => test.strictSame(data, expectedResultCb));
 
   test.end();
 });
 
-metatests.test('test retry error', test => {
+metatests.test('test retry error', (test) => {
   let minSum = 100;
   const expectedResult = new Error('Sorry');
 
@@ -62,13 +62,13 @@ metatests.test('test retry error', test => {
   };
 
   retry(asyncSum, [2, 3], { retries: 5, interval: 10 })
-    .catch(err => test.strictSame(err, expectedResult));
+    .catch((err) => test.strictSame(err, expectedResult));
 
   retry(
     sumCb,
     [2, 3, (err, data) => data * 2],
     { isCb: true, retries: 5, interval: 10 })
-    .catch(err => test.strictSame(err, expectedResult));
+    .catch((err) => test.strictSame(err, expectedResult));
 
   test.end();
 });
