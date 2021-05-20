@@ -5,7 +5,10 @@
   "main": "tunasync.js",
   "scripts": {
     "test": "metatests test/",
-    "docs": "documentation readme lib/ --section=API"
+    "docs": "documentation readme lib/ --section=API",
+    "types": "types/tunasync.d.ts",
+    "lint": "eslint . && prettier -c \"**/*.js\" \"**/*.json\" \"**/*.md\" \"**/*.yml\"",
+    "fmt": "prettier --write \"**/*.js\" \"**/*.json\" \"**/*.md\" \"**/*.yml\""
   },
   "repository": {
     "type": "git",
@@ -32,11 +35,13 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "dependencies": {},
   "devDependencies": {
     "documentation": "^13.1.0",
-    "eslint": "^7.15.0",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-prettier": "^3.4.0",
     "metatests": "^0.7.2",
-    "prettier": "^2.2.1"
+    "prettier": "^2.3.0"
   }
 }
