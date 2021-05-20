@@ -14,50 +14,50 @@ Async library for node.js
 
 #### Table of Contents
 
--   [AsyncEmitter](#asyncemitter)
-    -   [on](#on)
-        -   [Parameters](#parameters)
-    -   [onTemporary](#ontemporary)
-        -   [Parameters](#parameters-1)
-    -   [once](#once)
-        -   [Parameters](#parameters-2)
-    -   [emit](#emit)
-        -   [Parameters](#parameters-3)
-    -   [remove](#remove)
-        -   [Parameters](#parameters-4)
-    -   [clear](#clear)
-        -   [Parameters](#parameters-5)
-    -   [listeners](#listeners)
-        -   [Parameters](#parameters-6)
-    -   [count](#count)
-        -   [Parameters](#parameters-7)
-    -   [names](#names)
--   [map](#map)
-    -   [Parameters](#parameters-8)
-    -   [Examples](#examples)
--   [asyncMemoize](#asyncmemoize)
-    -   [Parameters](#parameters-9)
-    -   [Examples](#examples-1)
--   [Queue](#queue)
-    -   [pushTask](#pushtask)
-        -   [Parameters](#parameters-10)
-    -   [done](#done)
-        -   [Parameters](#parameters-11)
-    -   [doTasks](#dotasks)
--   [queue](#queue-1)
-    -   [Examples](#examples-2)
--   [reduce](#reduce)
-    -   [Parameters](#parameters-12)
-    -   [Examples](#examples-3)
--   [retry](#retry)
-    -   [Parameters](#parameters-13)
-    -   [Examples](#examples-4)
--   [series](#series)
-    -   [Parameters](#parameters-14)
-    -   [Examples](#examples-5)
--   [some](#some)
-    -   [Parameters](#parameters-15)
-    -   [Examples](#examples-6)
+- [AsyncEmitter](#asyncemitter)
+  - [on](#on)
+    - [Parameters](#parameters)
+  - [onTemporary](#ontemporary)
+    - [Parameters](#parameters-1)
+  - [once](#once)
+    - [Parameters](#parameters-2)
+  - [emit](#emit)
+    - [Parameters](#parameters-3)
+  - [remove](#remove)
+    - [Parameters](#parameters-4)
+  - [clear](#clear)
+    - [Parameters](#parameters-5)
+  - [listeners](#listeners)
+    - [Parameters](#parameters-6)
+  - [count](#count)
+    - [Parameters](#parameters-7)
+  - [names](#names)
+- [map](#map)
+  - [Parameters](#parameters-8)
+  - [Examples](#examples)
+- [asyncMemoize](#asyncmemoize)
+  - [Parameters](#parameters-9)
+  - [Examples](#examples-1)
+- [Queue](#queue)
+  - [pushTask](#pushtask)
+    - [Parameters](#parameters-10)
+  - [done](#done)
+    - [Parameters](#parameters-11)
+  - [doTasks](#dotasks)
+- [queue](#queue-1)
+  - [Examples](#examples-2)
+- [reduce](#reduce)
+  - [Parameters](#parameters-12)
+  - [Examples](#examples-3)
+- [retry](#retry)
+  - [Parameters](#parameters-13)
+  - [Examples](#examples-4)
+- [series](#series)
+  - [Parameters](#parameters-14)
+  - [Examples](#examples-5)
+- [some](#some)
+  - [Parameters](#parameters-15)
+  - [Examples](#examples-6)
 
 ### AsyncEmitter
 
@@ -71,9 +71,9 @@ It's used to add function when certain event is triggered
 
 ##### Parameters
 
--   `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the event
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function which will be called when
-    event is triggered
+- `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the event
+- `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function which will be called when
+  event is triggered
 
 #### onTemporary
 
@@ -82,12 +82,12 @@ certain event for a time specified by the third argument
 
 ##### Parameters
 
--   `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the event
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function which will be called when
-    event is triggered
--   `timeout` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** time during which the function
-    will process this event,
-    and after which it will be removed from this event (optional, default `0`)
+- `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the event
+- `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function which will be called when
+  event is triggered
+- `timeout` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** time during which the function
+  will process this event,
+  and after which it will be removed from this event (optional, default `0`)
 
 #### once
 
@@ -95,9 +95,9 @@ It's used to add function which will occur only once
 
 ##### Parameters
 
--   `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the event
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function which will be called when
-    event is triggered
+- `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the event
+- `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function which will be called when
+  event is triggered
 
 #### emit
 
@@ -105,8 +105,8 @@ It's used to trigger events
 
 ##### Parameters
 
--   `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the event
--   `args` **any** arguments for functions
+- `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the event
+- `args` **any** arguments for functions
 
 #### remove
 
@@ -115,9 +115,9 @@ from a specific event
 
 ##### Parameters
 
--   `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the event
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function that we want to
-    remove from this event
+- `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the event
+- `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function that we want to
+  remove from this event
 
 #### clear
 
@@ -125,7 +125,7 @@ Method to clear all events from emmiter or just one event
 
 ##### Parameters
 
--   `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of event, optinal paramater
+- `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of event, optinal paramater
 
 #### listeners
 
@@ -133,7 +133,7 @@ Return all listeners of event
 
 ##### Parameters
 
--   `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of event
+- `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of event
 
 Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** of listeners
 
@@ -143,15 +143,15 @@ Return number of listeners of event, or number of events
 
 ##### Parameters
 
--   `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of event, optinal paramater
+- `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of event, optinal paramater
 
-Returns **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+Returns **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)**
 
 #### names
 
 Return array of all events of emitter
 
-Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** 
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)**
 
 ### map
 
@@ -161,30 +161,34 @@ values that the function returned.
 
 #### Parameters
 
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** A function
-    (with a callback or promise contract)
-    that takes each argument
-    as input and returns the processed value.
-    -   `fn.item` **any** current value.
-    -   `fn.itemInde` **any** index of the currently
-        processed element in the array.
-    -   `fn.callback` **any** The callback function
-        in which the processed value is passed,
-        if fn function with callback contract.
--   `arr` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of values. (optional, default `[]`)
--   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with settings
-    for a function (optional, default `{}`)
+- `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** A function
+  (with a callback or promise contract)
+  that takes each argument
+  as input and returns the processed value.
+  - `fn.item` **any** current value.
+  - `fn.itemInde` **any** index of the currently
+    processed element in the array.
+  - `fn.callback` **any** The callback function
+    in which the processed value is passed,
+    if fn function with callback contract.
+- `arr` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of values. (optional, default `[]`)
+- `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with settings
+  for a function (optional, default `{}`)
 
 #### Examples
 
 ```javascript
 const arr = [1, 2, 3, 5];
 
-map((item, cb) => {
+map(
+  (item, cb) => {
     setTimeout(() => {
       cb(null, item + 2);
     }, 10);
-  }, arr, { isCb: true })
+  },
+  arr,
+  { isCb: true }
+)
   .then(data => console.log(data))
   .catch(err => console.log(err.message));
 ```
@@ -198,10 +202,10 @@ Function to memoize the function
 
 #### Parameters
 
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function to memoize
--   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with config (optional, default `{}`)
-    -   `config.isCb` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** function accepts callback
-    -   `config.cacheSize` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** max size of cache
+- `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function to memoize
+- `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with config (optional, default `{}`)
+  - `config.isCb` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** function accepts callback
+  - `config.cacheSize` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** max size of cache
 
 #### Examples
 
@@ -235,10 +239,10 @@ Add a new task to the queue
 
 ##### Parameters
 
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** task to add to the queue
--   `args` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of arguments for task (optional, default `[]`)
+- `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** task to add to the queue
+- `args` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of arguments for task (optional, default `[]`)
 
-Returns **this** 
+Returns **this**
 
 #### done
 
@@ -246,15 +250,15 @@ Set function that will be done after the all task of queue
 
 ##### Parameters
 
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function to be done
+- `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function to be done
 
-Returns **this** 
+Returns **this**
 
 #### doTasks
 
 Completion of tasks in the queue and save their result
 
-Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** 
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)**
 
 ### queue
 
@@ -286,27 +290,32 @@ of the function is stored in an accumulator (result/total).
 
 #### Parameters
 
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** A function
-    (with a callback or promise contract)
-    that takes each argument
-    as input and returns the processed value.
-    -   `fn.acc` **any** accumulator.
-    -   `fn.item` **any** current value.
-    -   `fn.callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function
-        in which the processed value is passed,
-        if fn function with callback contract.
--   `startValue` **any** your starting value,
-    otherwise it's 0.
--   `arr` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of values. (optional, default `[]`)
--   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with settings
-    for a function (optional, default `{}`)
+- `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** A function
+  (with a callback or promise contract)
+  that takes each argument
+  as input and returns the processed value.
+  - `fn.acc` **any** accumulator.
+  - `fn.item` **any** current value.
+  - `fn.callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function
+    in which the processed value is passed,
+    if fn function with callback contract.
+- `startValue` **any** your starting value,
+  otherwise it's 0.
+- `arr` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of values. (optional, default `[]`)
+- `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with settings
+  for a function (optional, default `{}`)
 
 #### Examples
 
 ```javascript
-reduce((acc, item, callback) => {
+reduce(
+  (acc, item, callback) => {
     setTimeout(() => callback(null, acc + item), 1000);
-  }, 10, [1, 2, 3, 4, 5, 6], { isCb: true })
+  },
+  10,
+  [1, 2, 3, 4, 5, 6],
+  { isCb: true }
+)
   .then(res => console.log(res))
   .catch(err => console.log(err.message));
 ```
@@ -319,21 +328,20 @@ Retry system fot async functions
 
 #### Parameters
 
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** asynchronous function (with or without callback)
-    that has to be repeated several times.
--   `args` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of arguments for the function. (optional, default `[]`)
--   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with settings for a function. (optional, default `{}`)
+- `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** asynchronous function (with or without callback)
+  that has to be repeated several times.
+- `args` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of arguments for the function. (optional, default `[]`)
+- `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with settings for a function. (optional, default `{}`)
 
 #### Examples
 
 ```javascript
 const fnPromises = require('fs').promises;
 
-retry(
-  fsPromises.readFile,
-  ['some.js', 'utf8'],
-  { retries: 5, interval: 10 })
-  .then(data => console.log(data));
+retry(fsPromises.readFile, ['some.js', 'utf8'], {
+  retries: 5,
+  interval: 10,
+}).then(data => console.log(data));
 ```
 
 Returns **any** the value of the fn, or an error
@@ -347,11 +355,11 @@ is called with the error value.
 
 #### Parameters
 
--   `fns` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of functions
--   `done` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** final callback
--   `config`   (optional, default `{}`)
--   `isCb` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** config for functions,
-    is functions has callback logic or async
+- `fns` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of functions
+- `done` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** final callback
+- `config` (optional, default `{}`)
+- `isCb` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** config for functions,
+  is functions has callback logic or async
 
 #### Examples
 
@@ -365,10 +373,14 @@ const createFn = value => (err, cb) => {
 
 const fns = [createFn(2000), createFn(60), createFn(500)];
 
-series(fns, (err, data) => {
-  const result = { err, data };
-  console.log(result);
-}, { isCb: true });
+series(
+  fns,
+  (err, data) => {
+    const result = { err, data };
+    console.log(result);
+  },
+  { isCb: true }
+);
 ```
 
 ### some
@@ -379,29 +391,31 @@ with any arg is true
 
 #### Parameters
 
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** A function
-    (with a callback or promise contract)
-    that takes each argument
-    as input and returns the processed value.
-    -   `fn.item` **any** current value.
-    -   `fn.callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function
-        in which the processed value is passed,
-        if fn function with callback contract.
--   `args`   (optional, default `[]`)
--   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with settings
-    for a function (optional, default `{}`)
--   `arr` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of values.
+- `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** A function
+  (with a callback or promise contract)
+  that takes each argument
+  as input and returns the processed value.
+  - `fn.item` **any** current value.
+  - `fn.callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function
+    in which the processed value is passed,
+    if fn function with callback contract.
+- `args` (optional, default `[]`)
+- `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with settings
+  for a function (optional, default `{}`)
+- `arr` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of values.
 
 #### Examples
 
 ```javascript
-some((filePath, callback) => {
+some(
+  (filePath, callback) => {
     fs.access(filePath, err => {
       callback(null, !err);
     });
   },
   ['file1', 'file2', 'retry.test.js'],
-  { isCb: true })
+  { isCb: true }
+)
   .then(res => console.log(res))
   .catch(err => console.log(err.message));
 ```
@@ -409,11 +423,12 @@ some((filePath, callback) => {
 Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** shows if function from any arg
 returns true
 
-
 ## Contributors
-* [Говоруха Максим](https://github.com/MaksGovor)
-* [Урин Дмитро](https://github.com/tedi4t)
-* [Трембач Анастасія](https://github.com/Anastasia-Tre)
+
+- [Говоруха Максим](https://github.com/MaksGovor)
+- [Урин Дмитро](https://github.com/tedi4t)
+- [Трембач Анастасія](https://github.com/Anastasia-Tre)
 
 ## License
+
 Tun async is [MIT licensed](https://github.com/Scopics/tunasync/blob/main/LICENSE).

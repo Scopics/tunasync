@@ -9,7 +9,6 @@ const submodules = [
   'retry', // repeating the function call until the result
   'series', // calling functions depends on the result of the previous
   'some', // async some array method
-].reduce((obj, path) => (
-  obj[path] = require('./lib/' + path), obj), {});
+].reduce((obj, path) => ((obj[path] = require('./lib/' + path)), obj), {});
 
 module.exports = { ...submodules };
