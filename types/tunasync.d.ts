@@ -20,7 +20,7 @@ export class AsyncEmitter {
   clear(name: string): boolean;
   listeners(name: string): Array<Function>;
   count(name: string): number;
-  names(): Array<string>; 
+  names(): Array<string>;
 }
 
 export class Queue {
@@ -28,42 +28,39 @@ export class Queue {
   onDone(result: any): any;
   pushTask(fn: Function, args?: Array<any>): Queue;
   done(fn: Function): Queue;
-  doTasks(): Promise<any>
+  doTasks(): Promise<any>;
 }
 
-export function queue (): Queue;
+export function queue(): Queue;
 
-export function asyncMemoize (
-  fn: Function,
-  config?: Config
-): Function;
+export function asyncMemoize(fn: Function, config?: Config): Function;
 
-export function retry (
+export function retry(
   fn: Function,
   args?: Array<any>,
   config?: Config
 ): Promise<any>;
 
-export function series (
+export function series(
   fns: Array<Function>,
   done: Function,
   config?: Config
 ): void;
 
-export function reduce (
+export function reduce(
   fn: Function,
   startValue: number,
   arr?: Array<any>,
   config?: Config
 ): Promise<any>;
 
-export function map (
+export function map(
   fn: Function,
   arr?: Array<any>,
   config?: Config
 ): Promise<Array<any>>;
 
-export function some (
+export function some(
   fn: Function,
   arr?: Array<any>,
   config?: Config

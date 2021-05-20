@@ -27,11 +27,13 @@ metatests.test('test asyncEmitter once', (test) => {
   ee.on('e2', fn2);
 
   ee.emit('e1', 'called1');
-  ee.emit('e1', 'called1')
-    .then((data) => test.strictSame(data, expectedResult1));
+  ee.emit('e1', 'called1').then((data) =>
+    test.strictSame(data, expectedResult1)
+  );
 
-  ee.emit('e2', 'called2')
-    .then((data) => test.strictSame(data, expectedResult2));
+  ee.emit('e2', 'called2').then((data) =>
+    test.strictSame(data, expectedResult2)
+  );
 
   test.end();
 });
@@ -60,8 +62,9 @@ metatests.test('test asyncEmitter onTemporary', (test) => {
 
   ee.onTemporary('e1', fn1, 2000);
 
-  ee.emit('e1', 'called1')
-    .then((data) => test.strictSame(data, expectedResult1));
+  ee.emit('e1', 'called1').then((data) =>
+    test.strictSame(data, expectedResult1)
+  );
 
   setTimeout(() => {
     ee.emit('e1', 'called2').then((data) =>
