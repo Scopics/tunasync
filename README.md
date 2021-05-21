@@ -6,7 +6,11 @@
 
 ![Logo](https://raw.githubusercontent.com/MaksGovor/Images/master/Voting-system/Logolib.png)
 
-Async library for node.js
+<p alighn="center">Async library for node.js</p>
+
+```bash
+$ npm install tunasync
+```
 
 ## API
 
