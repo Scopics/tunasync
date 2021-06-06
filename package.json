@@ -23,8 +23,7 @@
     "asyncronous",
     "promise",
     "nodejs",
-    "asynclib",
-    "scopics"
+    "asynclib"
   ],
   "author": "Uryn Dmytro, Govoruha Maxim, Trembach Anastasia",
   "license": "MIT",
